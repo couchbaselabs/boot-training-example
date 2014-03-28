@@ -4,7 +4,6 @@ import com.couchbase.client.CouchbaseClient;
 import com.couchbase.example.domain.BlogPost;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.spy.memcached.internal.OperationFuture;
-import net.spy.memcached.ops.OperationState;
 import net.spy.memcached.ops.OperationStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
