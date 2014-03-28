@@ -47,7 +47,7 @@ public class SessionController {
         long now = System.currentTimeMillis() / 1000L;
         Session session = new Session(username, now);
 
-        OperationFuture<Boolean> future = db.add("user::" + username, TIMEOUT, mapper.writeValueAsString(session));
+        OperationFuture<Boolean> future = db.add("session::" + username, TIMEOUT, mapper.writeValueAsString(session));
         future.get();
         OperationStatus status = future.getStatus();
 
@@ -63,7 +63,7 @@ public class SessionController {
 
     @RequestMapping("/verify/{username}")
     public ResponseEntity<String> verify(@PathVariable String username) throws Exception {
-        OperationFuture<Boolean> future = db.touch("user::" + username, TIMEOUT);
+        OperationFuture<Boolean> future = db.touch("session::" + username, TIMEOUT);
         future.get();
         OperationStatus status = future.getStatus();
 
@@ -79,7 +79,7 @@ public class SessionController {
 
     @RequestMapping("/logout/{username}")
     public ResponseEntity<String> logout(@PathVariable String username) throws Exception {
-        OperationFuture<Boolean> future = db.delete("user::" + username);
+        OperationFuture<Boolean> future = db.delete("session::" + username);
         future.get();
         OperationStatus status = future.getStatus();
 
